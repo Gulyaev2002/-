@@ -1,0 +1,181 @@
+using System.ComponentModel;
+using System.Globalization;
+
+namespace Индивидуальные_задания
+{
+    internal class Program
+    {
+        public static void zam(int q)
+        {
+            string s = "";
+            if (q == 0){Console.WriteLine(s);}
+            else{for (int i = 0; i < q; i++){s += "-";}Console.WriteLine(s);}
+        }
+        public static void ci(int w)
+        {
+            while (w != 0)
+            {
+                int g = w % 10;
+                Console.WriteLine(g);
+                w /= 10;
+            }
+        }
+        public static void cif(int e)
+        {
+             
+            int count = 0;
+            int t = e;
+            while (t != 0)
+            {
+                t /= 10;
+                count++;
+            }
+            int [] arr = new int [count];
+            while (e != 0)
+            {
+                for (int i = 0; i <arr.Length; i++)
+                {
+                    arr[i] = e % 10;
+                    e /= 10;
+                }
+            }
+            for (int i = count-1; i >= 0 ; i--)
+            {
+                Console.WriteLine(arr[i]);
+            }
+        }
+        public static void sok(int e,int w)
+        {
+            if (e > w)
+            {
+                for (int i = w;i > 0;i--)
+                {
+                    if ((e%i == 0) && (w % i == 0))
+                    {
+                        e /= i;
+                        w /= i;
+                    }
+                }
+            }
+            if (e < w)
+            {
+                for (int i = e; i > 0; i--)
+                {
+                    if ((e % i == 0) && (w % i == 0))
+                    {
+                        e /= i;
+                        w /= i;
+                    }
+                }
+            }
+
+            Console.WriteLine(e+"/"+w);
+        }
+        
+        static void Main(string[] args)
+        {
+            //f1();
+            //f2();
+            //f3();
+            //f4();
+            //f5();
+            //f6();
+            //f7();
+            //f8();
+            f9();
+
+        }
+        static void f1()
+        {
+            Console.WriteLine("Введите N:");
+            int q =Convert.ToInt32(Console.ReadLine());
+            zam(q);
+        }
+        static void f2()
+        {
+            int w = Convert.ToInt32(Console.ReadLine());
+            ci(w);
+        }
+        static void f3()
+        {
+            int e = Convert.ToInt32(Console.ReadLine());
+            cif(e);
+        }
+        static void f4()
+        {
+            string s = Console.ReadLine();
+            int r = Convert.ToInt32(s.Split(' ')[0]);
+            int g = Convert.ToInt32(s.Split(' ')[1]);
+            sok(r, g);
+        }
+        static void f5()
+        {
+            void Increment (int n)
+            {
+                n++;
+                Console.WriteLine($" Число в методе increment: {n}");
+            }
+            int number = 5;
+            Console.WriteLine($" Число до методе increment: {number}");
+            Increment (number);
+            Console.WriteLine($" Число после метода increment: {number}");
+
+        }
+        static void f6()
+        {
+            void Increment(ref int n)
+            {
+                n++;
+                Console.WriteLine($" Число в методе increment: {n}");
+            }
+            int number = 5;
+            Console.WriteLine($" Число до методе increment: {number}");
+            Increment(ref number);
+            Console.WriteLine($" Число после метода increment: {number}");
+
+        }
+        static void f7()
+        {
+            void sum(int x,int y, out int resul)
+            {
+                resul = x+y; 
+            }
+            int number;
+            sum(10,15,out number);
+            Console.WriteLine(number);
+        }
+        static void f8()
+        {
+            void Get(int wight,int height, out int rectArea,out int rectPerimetr)
+            {
+                rectArea = wight*height;
+                rectPerimetr = (wight+height)*2;
+            }
+            Get(10,20,out int area,out int perimetr);
+            Console.WriteLine($"Площадь прямоугольника: {area}");
+            Console.WriteLine($"Периметр прямоугольника: {perimetr}");
+        }
+        static void f9()
+        {
+            void Get(int x, int y, int z, out int sum)
+            {
+                if (x + y + z < 1)
+                {
+                    if ((x < y) && (x < z)){sum = (y + z) / 2; Console.WriteLine($"{sum}, {y}, {z}"); }else{if ((x > y) && (y < z)){sum = (x + z) / 2; Console.WriteLine($"{x}, {sum}, {z}"); } else{sum = (y + x) / 2; Console.WriteLine($"{x}, {y}, {sum}"); } }
+                }
+                else
+                {
+                    if (x<y)
+                    {sum = (y + z) / 2; Console.WriteLine($"{sum}, {y}, {z}");}
+                    if (x > y)
+                    { sum = (x + z) / 2; Console.WriteLine($"{x}, {sum}, {z}"); }
+                }
+            }
+            int x = Convert.ToInt32(Console.ReadLine());
+            int y = Convert.ToInt32(Console.ReadLine());
+            int z = Convert.ToInt32(Console.ReadLine());
+            Get(x, y, z, out int sum);
+        }
+
+    }
+}
