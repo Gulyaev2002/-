@@ -1,0 +1,59 @@
+namespace Гуляев_Александр_ИС 
+{
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Вывод с методом out");
+            nab1(a, b, c, out int col);
+            Console.WriteLine(col);
+            Console.WriteLine();
+            Console.WriteLine("Вывод с методом return");
+            nab(a, b, c);
+            Console.WriteLine();
+            
+
+        }
+        static void nab(int a, int b, int c)
+        {
+            a /= 1;
+            b /= 2;
+            c /= 4;
+            if ((a < b) && (a < c))
+            {
+                return a;
+            }
+            if ((a > b) && (b < c))
+            {
+                return b;
+            }
+            if ((a > c) && (b > c))
+            {
+                return c;
+            }
+        }
+        static void nab1(int a, int b, int c, out int col)
+        {
+            col = 0;
+            a /= 1;
+            b /= 2;
+            c /= 4;
+            if ((a < b) && (a < c))
+            {
+                col=a;
+            }
+            if ((a > b) && (b < c))
+            {
+                col= b;
+            }
+            if ((a > c) && (b > c))
+            {
+                col= c;
+            }
+        }
+    }
+}
